@@ -1,12 +1,13 @@
 from flask import Flask, request, jsonify
 from flasgger import Swagger
 from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS
 from sqlalchemy.exc import IntegrityError
 import os
 
 # --- Initialisation de l'application Flask ---
 app = Flask(__name__)
-
+CORS(app)
 # Configuration de la base de données PostgreSQL
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv(
     'DATABASE_URL',
